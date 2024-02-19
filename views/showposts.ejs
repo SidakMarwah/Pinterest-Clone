@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-zinc-800 text-white">
+    <% include ./partials/navbar.ejs %>
+
+        <h1 class="text-5xl text-center">My Pins</h1>
+
+        <div class="container mx-auto mt-8 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <% user.posts.reverse().map((post, index)=> { %>
+                <div class="bg-zinc-700 rounded-lg overflow-hidden shadow-md">
+                    <img src="/images/uploads/<%= post.image %>" alt="Image <%= index + 1 %>"
+                        class="w-full h-48 object-cover">
+                    <div class="px-4 py-2">
+                        <p class="text-lg font-semibold text-white mb-2">
+                            <%= post.title %>
+                        </p>
+                        <p class="text-gray-300">
+                            <%= post.description %>
+                        </p>
+                        <!-- Add more information or customize as needed -->
+                    </div>
+                </div>
+                <% }); %>
+        </div>
+
+</body>
+
+</html>
