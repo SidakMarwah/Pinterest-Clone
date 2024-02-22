@@ -9,9 +9,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="bg-zinc-800">
     <% include ./partials/navbar.ejs %>
-        <div class="profile w-full min-h-screen bg-zinc-800 text-white pt-1">
+        <div class="profile w-full text-white pt-1">
             <form id="uploadform" hidden action="/fileupload" method="post" enctype="multipart/form-data">
                 <input type="file" name="image" id="">
             </form>
@@ -22,7 +22,8 @@
                         <i class="text-zinc-800 ri-pencil-fill"></i>
                     </span>
                     <div class="w-32 h-32 bg-zinc-200 rounded-full overflow-hidden">
-                        <img class="w-full h-full object-cover" src='/images/uploads/<%= user?.profileImage %>' alt="">
+                        <img class="w-full h-full object-cover" src='/images/uploads/<%= user?.profileImage %>'
+                            onerror="this.src='images/default-profile.jpg'" alt="">
                     </div>
                 </div>
                 <h1 class="text-3xl font-semibold mt-5">
@@ -38,7 +39,9 @@
                     <a href="/show/posts">
                         <div class="w-52 h-40 bg-zinc-200 rounded-lg overflow-hidden">
                             <img class="w-full h-full object-cover"
-                                src="/images/uploads/<%= user?.posts[user.posts.length-1]?.image %>" alt="">
+                                src="/images/uploads/<%= user?.posts[user.posts.length-1]?.image %>"
+                                onerror="this.src='https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg'"
+                                alt="">
                         </div>
                         <h3 class="text-xl font-semibold mt-3">My Pins</h3>
                         <h5 class="text-sm font-medium opacity-60">
